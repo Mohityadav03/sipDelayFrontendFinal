@@ -1,11 +1,29 @@
-// import { fontWeight } from "@mui/system";
 import React from "react";
-// import CalculateButton from "./calculateBtn";
 import SlidersComponent from "./slidersComponent";
-import SipDelayGraph from "./sipdelayplot.png";
 import { useState } from "react";
+// import GraphDisplayComponent from "./graphDisplayComponent";
+import BarChart from "./BarChart";
 
 function Graph(props) {
+  const UserData = props.graphData;
+  console.log(props.graphData);
+  // graph start
+
+  const [userData, setUserData] = useState({
+    labels: UserData.map((data) => data.key),
+    datasets: [
+      {
+        label: "SIP Delay Projections",
+        data: UserData.map((data) => data.value),
+        backgroundColor: ["#e58cdb", "#c9fdd7", "#ff0000"],
+        borderColor: "black",
+        borderWidth: 2,
+      },
+    ],
+  });
+
+  // graph end
+
   const btnStyle = {
     marginTop: "1rem",
     fontSize: "1em",
@@ -20,12 +38,11 @@ function Graph(props) {
     transition: "all .15s ease-in-out",
     color: "00d7c3",
     textColor: "red",
+    boxShadow: "2px  2px 10px 0px rgb(0 0 0/26%)",
   };
   const [isGraph, setIsGraph] = useState(true);
   // change state function
   function changeState() {
-    // if(isGraph===true)
-
     setIsGraph(false);
   }
 
@@ -35,38 +52,32 @@ function Graph(props) {
         <div
           className="container"
           style={{
-            border: "1px solid black",
-            padding: "5rem",
             backgroundColor: "#fafafa",
+            width: "60rem",
+            marginLeft: "6rem",
           }}
         >
-          <fiqure>
-            <figcaption
-              style={{
-                textAlign: "center",
-                fontSize: "1.2rem",
-                fontWeight: "600",
-              }}
-            >
-              SIP- Cost of Delay
-            </figcaption>
-            <img
-              src={SipDelayGraph}
-              alt="graphicalRepresentation"
-              style={{
-                display: "block",
-                margin: "1rem auto",
-              }}
-            />
-          </fiqure>
+          {/* barchart Component */}
+
+          <div
+            style={{
+              padding: "3rem",
+              margin: "3rem",
+              marginBottom: "3rem",
+              backgroundColor: "white",
+              boxShadow: "2px  2px 10px 0px rgb(0 0 0/26%)",
+            }}
+          >
+            <BarChart chartData={userData} />
+          </div>
 
           <div
             className="result-container"
             style={{
-              marginTop: "2rem",
-              border: "1px solid black",
+              marginTop: "0.2rem",
               padding: "1rem",
               backgroundColor: "white",
+              boxShadow: "2px  2px 10px 0px rgb(0 0 0/26%)",
             }}
           >
             <header
@@ -111,7 +122,7 @@ function Graph(props) {
                     color: "#dc2f2f",
                   }}
                 >
-                  "API DATA SPAN"
+                  {props.lossFromDelay}
                 </span>{" "}
                 in the final value of your investment.
               </p>
@@ -129,8 +140,8 @@ function Graph(props) {
               </p>
             </footer>
           </div>
-
           {/* recalculate button calling button component */}
+
           <button type="button" style={btnStyle} onClick={changeState}>
             re-calculate
           </button>

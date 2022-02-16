@@ -7,15 +7,14 @@ import Slider from "@mui/material/Slider";
 import MuiInput from "@mui/material/Input";
 import Graph from "./graph";
 
-// import { useNavigate } from "react-router-dom";
-// import CalculateButton from "./calculateBtn";
 import { useState } from "react";
 
 const Input = styled(MuiInput)`
   width: 82px;
-  border: solid 1px;
+  border: solid 2px #00d7c3;
   right: 5px;
   bottom: 15px;
+  color: black;
 `;
 
 const monthlyInvestmentMarks = [
@@ -228,6 +227,7 @@ export default function SipDelayCal() {
   const [expectedRateOfReturnValue, setExpectedRateOfReturn] =
     React.useState(12);
   const [startSipDelayValue, setStartSipDelay] = React.useState(6);
+  const [apiData, setApiData] = React.useState({});
 
   const handleMonthlyInvestmentSliderChange = (
     event,
@@ -309,23 +309,6 @@ export default function SipDelayCal() {
     }
   };
 
-  // let navigate = useNavigate();
-  // const Button = () => (
-  //   <button
-  //     type="button"
-  //     onClick={() => {
-  //       let r = expectedRateOfReturnValue;
-  //       let p = monthlyInvestmentValue;
-  //       let n = investmentPeriodValue * 12;
-  //       // let i = r/100/12;
-  //       // console.log(Math.floor(p*((1+i)^(n-1))*(1+i)/i));
-  //       let res = Math.floor(p * (1 + r / 100) * n);
-  //       navigate("/result", { result: res });
-  //     }}
-  //   >
-  //     Calculate
-  //   </button>
-  // );
   const btnStyle = {
     marginTop: "1rem",
     fontSize: "1em",
@@ -340,17 +323,37 @@ export default function SipDelayCal() {
     transition: "all .15s ease-in-out",
     color: "00d7c3",
     textColor: "red",
+    boxShadow: "2px  2px 10px 0px rgb(0 0 0/26%)",
   };
 
   const [isSlider, setIsSlider] = useState(true);
+
   function changeState() {
-    setIsSlider(false);
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        monthlyInvestment: monthlyInvestmentValue,
+        investmentPeriod: investmentPeriodValue,
+        rateOfReturn: expectedRateOfReturnValue,
+        delay: startSipDelayValue,
+      }),
+    };
+    fetch("http://127.0.0.1:3000/sipDelayCalculator", requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        setApiData(data);
+        setIsSlider(false);
+      });
   }
 
   return (
     <>
       {isSlider === true && (
-        <div>
+        <div style={{ marginLeft: "-9rem" }}>
           <Box sx={{ width: 800, marginLeft: 50, marginRight: 50 }}>
             <br></br>
             <Typography id="input-slider" gutterBottom>
@@ -532,10 +535,14 @@ export default function SipDelayCal() {
       )}
 
       {isSlider === false && (
-        <div>
-          <Graph delayMonths={startSipDelayValue} />
-        </div>
+        <Graph
+          delayMonths={apiData["delayMonths"]}
+          lossFromDelay={apiData["lossFromDelay"]}
+          graphData={apiData["graph"]}
+        />
       )}
     </>
   );
 }
+
+// &&console.log(apiData)}

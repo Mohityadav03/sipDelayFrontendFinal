@@ -2,6 +2,7 @@ import React from "react";
 import finance from "./finance.png";
 import stepup from "./stepup.png";
 import sipdelay from "./sipdelay.png";
+
 import "./homepage.css";
 
 function HomePage() {

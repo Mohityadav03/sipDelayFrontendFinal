@@ -10,14 +10,6 @@ function App() {
     <>
       <div className="wrapper">
         <Sip />
-        {/*  calling home page*/}
-        {/* <HomePage /> */}
-
-        {/* result page */}
-        {/* <Graph /> */}
-
-        {/* calculator page */}
-        {/* <SipDelayCalculator /> */}
       </div>
     </>
   );

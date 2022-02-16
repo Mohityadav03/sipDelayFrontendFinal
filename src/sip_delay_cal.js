@@ -1,33 +1,36 @@
+import { padding } from "@mui/system";
 import React from "react";
 import BackButton from "./backButton";
 import SlidersComponent from "./slidersComponent";
-// import Graph from "./graph";
-// import useState from "react";
-// state
 
 function SipDelayCal() {
-  // const sliderPage = false;
-
-  // changeState();
   return (
     <>
-      {/* back button component */}
-      <div className="back-btn">
-        <BackButton />
-      </div>
+      <div style={{ margin: " 2rem 7rem" }}>
+        {/* back button component */}
+        <div className="back-btn" style={{ marginLeft: "6rem" }}>
+          <BackButton />
+        </div>
 
-      {/* call slider component */}
-
-      {/* {sliderPage === true && ( */}
-      <div className="sliders" style={{ margin: "2rem" }}>
-        <SlidersComponent />
+        <div
+          className="container"
+          style={{
+            boxShadow: "2px  2px 10px 0px rgb(0 0 0/66%)",
+            margin: "5rem",
+            marginTop: "1rem",
+            overflowX: "scroll",
+            height: "40rem",
+          }}
+        >
+          {/* call slider component */}
+          <div
+            className="sliders"
+            style={{ marginLeft: "0rem", padding: "4rem , 0rem" }}
+          >
+            <SlidersComponent />
+          </div>
+        </div>
       </div>
-      {/* )}  */}
-      {/* call resut component to render */}
-      {/* 
-      <div className="resutPage" style={{ margin: "2rem" }}>
-        <Graph />
-      </div> */}
     </>
   );
 }

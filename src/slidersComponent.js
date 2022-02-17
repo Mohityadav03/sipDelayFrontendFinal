@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 import MuiInput from "@mui/material/Input";
-import Graph from "./graph";
+import Graph from "./resultPage";
 
 import { useState } from "react";
 
@@ -17,6 +17,7 @@ const Input = styled(MuiInput)`
   color: black;
 `;
 
+// labels and marks for sliders
 const monthlyInvestmentMarks = [
   {
     value: 2000,
@@ -158,6 +159,8 @@ const expectedRateOfReturnMarks = [
   },
 ];
 
+// labels on sliders
+
 const startSipDelayMarks = [
   {
     value: 1,
@@ -205,6 +208,7 @@ const startSipDelayMarks = [
   },
 ];
 
+// value response functions
 function monthlyInvestmentText(value) {
   return `Rs. ${value}`;
 }
@@ -220,6 +224,8 @@ function expectedRateOfReturnText(value) {
 function startSipDelayText(value) {
   return `${value} months`;
 }
+
+// SIP delay component
 
 export default function SipDelayCal() {
   const [monthlyInvestmentValue, setMonthlyInvestment] = React.useState(100000);
@@ -309,6 +315,7 @@ export default function SipDelayCal() {
     }
   };
 
+  // calculate button style
   const btnStyle = {
     marginTop: "1rem",
     fontSize: "1em",
@@ -326,8 +333,10 @@ export default function SipDelayCal() {
     boxShadow: "2px  2px 10px 0px rgb(0 0 0/26%)",
   };
 
+  // state defining for conditional rendring of componenet
   const [isSlider, setIsSlider] = useState(true);
 
+  // making Api call as defined state changes on pressing calculate button
   function changeState() {
     const requestOptions = {
       method: "POST",
@@ -342,6 +351,8 @@ export default function SipDelayCal() {
         delay: startSipDelayValue,
       }),
     };
+
+    // api call to SIP delay Server
     fetch("http://127.0.0.1:3000/sipDelayCalculator", requestOptions)
       .then((response) => response.json())
       .then((data) => {
@@ -350,6 +361,7 @@ export default function SipDelayCal() {
       });
   }
 
+  // jsx for rendring of page 2(sliders + result page)
   return (
     <>
       {isSlider === true && (
@@ -544,5 +556,3 @@ export default function SipDelayCal() {
     </>
   );
 }
-
-// &&console.log(apiData)}

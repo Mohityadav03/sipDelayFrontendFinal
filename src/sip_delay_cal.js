@@ -1,8 +1,8 @@
-import { padding } from "@mui/system";
 import React from "react";
 import BackButton from "./backButton";
 import SlidersComponent from "./slidersComponent";
 
+// our calculator componenet (SIP DELAY )
 function SipDelayCal() {
   return (
     <>

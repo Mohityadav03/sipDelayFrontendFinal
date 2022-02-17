@@ -1,7 +1,7 @@
 import React from "react";
-// import proptypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
+// calculate button styles
 const btnStyle = {
   marginTop: "1rem",
   fontSize: "1em",
@@ -17,6 +17,8 @@ const btnStyle = {
   color: "00d7c3",
   textColor: "red",
 };
+
+// Calculate button componenet
 
 function CalculateButton(props) {
   let navigate = useNavigate();

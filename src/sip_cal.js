@@ -1,4 +1,6 @@
 import React from "react";
+
+//  can be used for implenting sip calculator logic also
 function SipCal() {
   return (
     <>

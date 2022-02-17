@@ -5,9 +5,9 @@ import stepup from "./stepup.png";
 import sipdelay from "./sipdelay.png";
 import "./homepage.css";
 
+// home page component from where we navigate to diffrent calculators
 function Navigation() {
   let homePageStyle = {
-    // border: "1px solid black",
     margin: "7rem",
     marginLeft: "9rem",
   };

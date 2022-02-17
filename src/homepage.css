@@ -9,16 +9,6 @@ a:-webkit-any-link {
   padding-left: 0.9rem;
 }
 
-/* .card-desc {
-
-}
-
-.card-name {
-
-} */
-
-/* card info image */
-
 .card-1,
 .card-2,
 .card-3,
@@ -28,8 +18,6 @@ a:-webkit-any-link {
   flex-direction: row;
   justify-content: center;
 }
-/* .card-image {
-} */
 
 .card-image img {
   height: 12rem;
@@ -41,25 +29,11 @@ a:-webkit-any-link {
   width: 8rem;
 }
 
-/* .card-desc {
-} */
-
-/* // outer box flexBox */
-
 .home-page {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-
-/* .card-1 {
-}
-.card-2 {
-}
-.card-3 {
-}
-.card-4 {
-} */
 
 /* horizontal grouping */
 .horizontal-grouping {

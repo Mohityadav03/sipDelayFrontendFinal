@@ -1,6 +1,7 @@
 import React from "react";
 import proptypes from "prop-types";
 
+// Back button + sip delay calculator name heading component
 function BackButton(props) {
   const textStyle = {
     fontSize: "2rem",
@@ -8,7 +9,6 @@ function BackButton(props) {
     letterSpacing: "0",
     lineHeight: "1rem",
     Color: "#333333",
-    // color: "#606470",
   };
   return (
     <>

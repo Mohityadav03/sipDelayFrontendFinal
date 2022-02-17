@@ -1,12 +1,12 @@
 import React from "react";
 import SlidersComponent from "./slidersComponent";
 import { useState } from "react";
-// import GraphDisplayComponent from "./graphDisplayComponent";
 import BarChart from "./BarChart";
 
+// component called for result page
 function Graph(props) {
   const UserData = props.graphData;
-  console.log(props.graphData);
+
   // graph start
 
   const [userData, setUserData] = useState({
@@ -21,9 +21,9 @@ function Graph(props) {
       },
     ],
   });
-
   // graph end
 
+  // RE-calculate button styles
   const btnStyle = {
     marginTop: "1rem",
     fontSize: "1em",
@@ -68,6 +68,16 @@ function Graph(props) {
               boxShadow: "2px  2px 10px 0px rgb(0 0 0/26%)",
             }}
           >
+            <span
+              style={{
+                transform: "rotate(-90deg)",
+                fontSize: "1.3rem",
+                fontStyle: "bold",
+              }}
+            >
+              Amount in &#40;Rs.&#41;
+            </span>
+
             <BarChart chartData={userData} />
           </div>
 
@@ -82,7 +92,6 @@ function Graph(props) {
           >
             <header
               style={{
-                //   border: "1px solid black",
                 padding: "1rem",
                 backgroundColor: "#bef2ff",
                 margin: " -1rem ",
@@ -102,7 +111,7 @@ function Graph(props) {
             </header>
             <div className="result-text">
               <p style={{ fontSize: "1.1rem", fontWeight: "600" }}>
-                Delay of{" "}
+                Delay of&nbsp;{" "}
                 <span
                   style={{
                     fontStyle: "italic",
@@ -113,7 +122,7 @@ function Graph(props) {
                 >
                   {props.delayMonths}
                 </span>{" "}
-                in starting your SIP will cause a notational Loss of : Rs
+                in starting your SIP will cause a notational Loss of Rs.&nbsp;
                 <span
                   style={{
                     fontStyle: "italic",

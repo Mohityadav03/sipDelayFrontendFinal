@@ -16,7 +16,10 @@ function BackButton(props) {
         <h1 style={textStyle}>SIP DELAY CALCULATOR</h1>
         <div className="back-btn">
           <a href="/" style={{ textDecoration: "none", color: "#333333" }}>
-            <i class="bi bi-arrow-left-circle" style={{ fontSize: "3rem" }}></i>
+            <i
+              className="bi bi-arrow-left-circle"
+              style={{ fontSize: "3rem" }}
+            ></i>
             <span
               style={{
                 fontSize: "1.8rem",

@@ -122,7 +122,8 @@ function Graph(props) {
                 >
                   {props.delayMonths}
                 </span>{" "}
-                in starting your SIP will cause a notational Loss of Rs.&nbsp;
+                Months in starting your SIP will cause a notational Loss of :
+                Rs.&nbsp;
                 <span
                   style={{
                     fontStyle: "italic",
@@ -131,7 +132,7 @@ function Graph(props) {
                     color: "#dc2f2f",
                   }}
                 >
-                  {props.lossFromDelay}
+                  {Math.round(props.lossFromDelay * 100) / 100}
                 </span>{" "}
                 in the final value of your investment.
               </p>
